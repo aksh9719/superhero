@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+table, td, th {  
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 15px;
+  text-align: center;
+}
+</style>
+</head>
+<body onload="start()">
+
+<h2 style="text-align:center"> SuperHero Card</h2>
+<h4 id='status' style="text-align:center">Loading...</h4>
+<div class="card" style='float:left;margin-left: 50px;max-width: 400px;display: none;'>
+  <img id='superimage' style="width:100%">
+  <h1 id='name'></h1>
+  
+
+  
+</div>
+
+  <div class="card" style="max-width: 350px;display: none;">
+   <table>
+       <tr>
+           <td colspan=2 >
+               Powerstats          </td>
+           
+       </tr>
+       <tr>
+           <td>
+            intelligence
+           </td>
+           <td id='intelligence'>
+               
+        </td>
+       </tr>
+       <tr>
+           <td>
+            strength
+           </td>
+           <td id='strength'>
+
+           </td>
+       </tr>
+       <tr>
+        <td>
+            speed
+        </td>
+        <td id='speed'>
+            
+        </td>
+    </tr>
+    <tr>
+        <td>
+            durability
+        </td>
+        <td id='durability'>
+            
+        </td>
+    </tr>
+    <tr>
+        <td>
+            power
+        </td>
+        <td id='power'>
+            
+        </td>
+    </tr>
+    <tr>
+        <td>
+            combat
+        </td>
+        <td id='combat'>
+            
+        </td>
+    </tr>
+    
+   </table>
+   
+    
+  </div>
+  <div class="card" style='float:right;margin-top:-350px;margin-right: 50px;max-width: 500px;display: none;' >
+    <table>
+        <tr>
+            <td colspan=2>
+                Biography         </td>
+            
+        </tr>
+        <tr>
+            <td>
+                full-name
+            </td>
+            <td id='full-name'>
+                
+         </td>
+        </tr>
+        <tr>
+            <td>
+                alter-egos
+            </td>
+            <td id='alter-egos'>
+ 
+            </td>
+        </tr>
+        <tr>
+         <td>
+            aliases
+         </td>
+         <td id='aliases'>
+             
+         </td>
+     </tr>
+     <tr>
+         <td>
+            place-of-birth
+         </td>
+         <td id='place-of-birth'>
+             
+         </td>
+     </tr>
+     <tr>
+         <td>
+            first-appearance
+         </td>
+         <td id='first-appearance'>
+             
+         </td>
+     </tr>
+     <tr>
+         <td>
+            publisher
+         </td>
+         <td id='publisher'>
+             
+         </td>
+     </tr>
+     <tr>
+        <td>
+            alignment
+        </td>
+        <td id='alignment'>
+            
+        </td>
+    </tr>
+     
+    </table>
+    
+     
+   </div>
+</body>
+<script>
+   function start(){
+        var params = location.search;
+        var id=params.substring(4,params.indexOf('%'));
+        getSearchResult(id)
+   }
+        
+        const getSearchResult = async (id) => {
+    try {
+        const res = await fetch('https://api.allorigins.win/raw?url=https://superheroapi.com/api/4994777060586748/'+id);
+        var heros = await res.json();
+      document.getElementById('superimage').src=heros.image.url;
+
+      document.getElementById('name').innerHTML=heros.name;
+
+     
+
+      document.getElementById('intelligence').innerHTML=heros.powerstats.intelligence;
+       document.getElementById('strength').innerHTML=heros.powerstats.strength;
+       document.getElementById('speed').innerHTML=heros.powerstats.speed;
+       document.getElementById('durability').innerHTML=heros.powerstats.durability;
+       document.getElementById('power').innerHTML=heros.powerstats.power;
+       document.getElementById('combat').innerHTML=heros.powerstats.combat;
+
+       document.getElementById('full-name').innerHTML=heros.biography['full-name'];
+       document.getElementById('alter-egos').innerHTML=heros.biography['alter-egos'];
+       document.getElementById('aliases').innerHTML=heros.biography.aliases;
+       document.getElementById('place-of-birth').innerHTML=heros.biography['place-of-birth'];
+    document.getElementById('first-appearance').innerHTML=heros.biography['first-appearance'];
+    document.getElementById('publisher').innerHTML=heros.biography.publisher;
+    document.getElementById('alignment').innerHTML=heros.biography.alignment;
+    document.getElementById('status').style.display='none';
+ document.getElementsByClassName('card')[0].style.display='block';
+ document.getElementsByClassName('card')[1].style.display='block';
+ document.getElementsByClassName('card')[2].style.display='block';
+
+
+
+    
+
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+</script>
+
+</html>
