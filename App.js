@@ -51,7 +51,7 @@ const displayCharacteSearch = (characters) => {
     const htmlString = characters
         .map((character) => {
             return `
-            <a href='Superhero.html?id=${character.id} target='_blank'><li class="character">
+            <a href='superhero.html?id=${character.id} target='_blank'><li class="character">
                 <h2>${character.name}</h2>
                 <p>id: ${character.id}</p>
  
@@ -84,7 +84,7 @@ function favfunc(){
 //        favid.push(...temp);
 //    }
 localStorage.setItem('fav',JSON.stringify(favid));
-    window.open('Fav.html',"_blank");
+    window.open('fav.html',"_blank");
 
 }
 

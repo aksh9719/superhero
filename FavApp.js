@@ -11,7 +11,7 @@ const displayCharacteSearch = (characters) => {
     const htmlString = characters
         .map((character) => {
             return `
-            <a id=${character.id} href='Superhero.html?id=${character.id} target='_blank'><li class="character">
+            <a id=${character.id} href='superhero.html?id=${character.id} target='_blank'><li class="character">
                 <h2>${character.name}</h2>
                 <p>id: ${character.id}</p>
  
