@@ -1,16 +1,7 @@
 
 const charactersList = document.getElementById('charactersList');
-// let hpCharacters = [];
+
 var favid=[];
-// const loadCharacters = async () => {
-//     try {
-//         const res = await fetch('https://hp-api.herokuapp.com/api/characters');
-//         hpCharacters = await res.json();
-//         displayCharacters(hpCharacters);
-//     } catch (err) {
-//         console.error(err);
-//     }
-// };
 
 const displayCharacters = (characters) => {
     const htmlString = characters
